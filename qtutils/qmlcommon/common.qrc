@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/common">
+        <file>Theme.qml</file>
+        <file>Toast.qml</file>
+        <file>image/IconWarning.png</file>
+        <file>QButton.qml</file>
+        <file>QTitleBar.qml</file>
+        <file>QInput.qml</file>
+        <file>QDialog.qml</file>
+        <file>image/Loading.png</file>
+        <file>QLoading.qml</file>
+        <file>image/GradientGray.png</file>
+        <file>QRCode.qml</file>
+        <file>QLinkButton.qml</file>
+        <file>QInputField.qml</file>
+        <file>QList.qml</file>
+        <file>QListItem.qml</file>
+        <file>QTextField.qml</file>
+        <file>image/GradientBlue.png</file>
+        <file>QSlider.qml</file>
+        <file>QRScanner.qml</file>
+        <file>image/Check.png</file>
+        <file>QCheckBox.qml</file>
+        <file>math/BCHaddrjs-0.4.8.min.js</file>
+        <file>math/bignumber.js</file>
+        <file>math/HDMath.qml</file>
+        <file>math/Math.js</file>
+    </qresource>
+</RCC>
