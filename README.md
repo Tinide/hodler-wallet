@@ -50,14 +50,14 @@ Hodler is an offline wallet application. For key security, it should be run on d
 
 Hodler uses the root key to generate private keys and addresses for various cryptocurrencies.
 
-Hodler receives and transmits encrypted currency by communicating with the Porter application, and by using the camera to scan the QR code, Hodler and the Porter application communicate.
+Hodler receives and transmits crypto currency by communicating with the Porter application, and by using the camera to scan the QR code, Hodler and the Porter application communicate.
 
 
 ## Porter
 
 ![Hodler](./doc/Porter.png)
 
-Porter is an auxiliary tool used by Hodler. It can exchange information with the Hodler application and assist in the transmission of encrypted currency addresses and encrypted currency transactions.
+Porter is an auxiliary tool used by Hodler. It can exchange information with the Hodler application and assist in the transmission of crypot currency addresses and crypto currency transactions.
 
 Porter itself does not store any key, only store the address and transaction content, and send the transaction by calling the blockchain-related service interface on the network.
 
