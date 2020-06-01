@@ -17,6 +17,12 @@ Types currently supported by Hodler-Wallet 0.1.0:
 - Ethereum
 - Ripple
 
+Supported platforms:
+- Windows
+- Macos
+- Linux (Ubuntu)
+- Android
+- iOS (Need to manually compile and install)
 
 ## Table of Contents
 
