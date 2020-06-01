@@ -71,8 +71,8 @@ From there:
 
 #### Linux package
 ```sh
-$ dpkg -i porter-0.1.0.deb
-$ dpkg -i hodler-0.1.0.deb
+$ sudo dpkg -i porter-0.1.0.deb
+$ sudo dpkg -i hodler-0.1.0.deb
 ```
 
 ### Build from Source
