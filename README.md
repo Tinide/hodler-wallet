@@ -61,7 +61,7 @@ The main function of Porter is to generate transactions from addresses, and then
 ## install
 ### Install prebuilt packages
 
-We host prebuilt binaries over at our [distributions page](https://).
+We host prebuilt binaries over at our [distributions page](https://github.com/yancaitech/hodler-wallet/releases/tag/0.1.0).
 
 From there:
 - Click the blue "Download Hodler / Porter" on the right side of the page.
