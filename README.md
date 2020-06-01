@@ -213,6 +213,6 @@ ripple:
 
 ## License
 The Hodler-Wallet project is under GNU GENERAL PUBLIC LICENSE version 3:
-- GNU GENERAL PUBLIC LICENSE ([GPLv3](https://github.com/yancaitech/hodler-wallet/LICENSE.GPLv3))
+- GNU GENERAL PUBLIC LICENSE ([GPLv3](https://github.com/yancaitech/hodler-wallet/blob/master/LICENSE.GPLv3))
 
 Copyright © 2020 yancaitech <yancaitech@gmail.com>
