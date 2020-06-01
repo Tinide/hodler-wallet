@@ -57,7 +57,7 @@ Hodler receives and transmits crypto currency by communicating with the Porter a
 
 ![Hodler](./doc/Porter.png)
 
-Porter is an auxiliary tool used by Hodler. It can exchange information with the Hodler application and assist in the transmission of crypot currency addresses and crypto currency transactions.
+Porter is an auxiliary tool used by Hodler. It can exchange information with the Hodler application and assist in the transmission of crypto currency addresses and transactions.
 
 Porter itself does not store any key, only store the address and transaction content, and send the transaction by calling the blockchain-related service interface on the network.
 
