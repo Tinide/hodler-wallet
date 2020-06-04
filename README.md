@@ -1,6 +1,5 @@
 # Hodler-Wallet
 
-![Hodler-Wallet](./doc/HodlerWallet.png)
 
 ## What is Hodler-Wallet ?
 
