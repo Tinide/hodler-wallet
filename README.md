@@ -8,6 +8,8 @@ Hodler-Wallet is an open source cryptocurrency wallet written for Hodler.
 
 Hodler-Wallet is composed of offline-application (Hodler) and online-application (Porter).
 
+Porter supports custom btcd, ltcd, bchd nodes, and it is safer and faster to use self-built nodes.
+
 Types currently supported by Hodler-Wallet 0.1.0:
 - Bitcoin
 - Litecoin
