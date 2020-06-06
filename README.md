@@ -70,6 +70,10 @@ The main function of Porter is to generate transactions from addresses, and then
 
 We host prebuilt binaries over at our [distributions page](https://github.com/yancaitech/hodler-wallet/releases/tag/0.1.0).
 
+Android Google Play:
+- [Hodler 0.1.0](https://play.google.com/store/apps/details?id=org.yancaitech.hodler)
+- [Porter 0.1.0](https://play.google.com/store/apps/details?id=org.yancaitech.porter)
+
 From there:
 - Click the blue "Download Hodler / Porter" on the right side of the page.
 - Desktop version Open/extract the archive.
