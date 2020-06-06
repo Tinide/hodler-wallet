@@ -25,6 +25,9 @@ Supported platforms:
 - Android
 - iOS (Need to manually compile and install)
 
+Twitter:
+https://twitter.com/yancaitech
+
 ## Table of Contents
 
 - [Hodler](#Hodler)
