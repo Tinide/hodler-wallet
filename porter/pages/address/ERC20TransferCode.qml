@@ -112,6 +112,9 @@ Rectangle {
         var fmp = HDMath.pow(10, tdecimals)
         var fval = HDMath.mul(inputAmount.text, fmp)
         jsonObj["co"] = tcontract
+        jsonObj["sm"] = tsymbol
+        jsonObj["tn"] = tname
+        jsonObj["td"] = tdecimals
         jsonObj["v"] = fval
         if (jsonObj === null) {
             Theme.showToast(Lang.msgCreateTxFailed)
