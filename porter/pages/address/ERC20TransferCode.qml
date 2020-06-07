@@ -108,7 +108,7 @@ Rectangle {
         }
 
         var jsonObj = agent.createTransactionRequest(coinType,address,inputAddress.text,
-                                                 inputAmount.text,inputFee.text,rawUtxo)
+                                                     inputAmount.text,inputFee.text,rawUtxo)
         var fmp = HDMath.pow(10, tdecimals)
         var fval = HDMath.mul(inputAmount.text, fmp)
         jsonObj["co"] = tcontract
@@ -116,17 +116,12 @@ Rectangle {
         jsonObj["tn"] = tname
         jsonObj["td"] = tdecimals
         jsonObj["v"] = fval
-        if (jsonObj === null) {
-            Theme.showToast(Lang.msgCreateTxFailed)
-            hide()
-        }
         if (Config.debugMode) {
             rawtx = JSON.stringify(jsonObj, "", "  ")
             //console.info(rawtx)
         } else {
             rawtx = JSON.stringify(jsonObj)
         }
-
     }
 
     Connections {
