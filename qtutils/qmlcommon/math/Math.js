@@ -30,6 +30,20 @@ function div(v1,v2) {
     return c.toString()
 }
 
+function fdiv(v1,v2) {
+    var a = new BigNumber(v1)
+    var b = new BigNumber(v2)
+    var c = a.dividedBy(b)
+    return c.toString()
+}
+
+function pow(v1,v2) {
+    var a = new BigNumber(v1)
+    var b = new BigNumber(v2)
+    var c = a.pow(b).integerValue()
+    return c.toString()
+}
+
 function cmp(v1,v2) {
     var a = new BigNumber(v1)
     var b = new BigNumber(v2)

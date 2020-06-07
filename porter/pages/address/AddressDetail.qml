@@ -37,6 +37,7 @@ Rectangle {
         labelAddress.inputFocus = false
         opacity = 0
         actionFadeout.running = true
+        areaERC20.visible = false
 
         label = ""
         address = ""
@@ -77,6 +78,17 @@ Rectangle {
             } else {
                 balance = ba
                 total = ta
+            }
+            if (agent.isWeitCoinType(coinType)) {
+                try {
+                    var jdat = JSON.parse(dat)
+                    for (var i = 0; i < jdat["erc20"].length; i++) {
+                        if (jdat["erc20"][i]["balance"] !== "0") {
+                            areaERC20.visible = true
+                            break
+                        }
+                    }
+                } catch (ee) {}
             }
 
             _pageAddressDetail.balance = balance
@@ -141,7 +153,7 @@ Rectangle {
 
     QTextField {
         id: labelAddress
-        width: Theme.pw(0.9)
+        width: Theme.pw(0.91)
         height: Theme.ph(0.10)
         anchors.top: labelAddressTip.bottom
         anchors.topMargin: Theme.ph(0.01)
@@ -312,11 +324,32 @@ Rectangle {
         }
     }
 
+    Item {
+        id: areaERC20
+        clip: true
+        visible: false
+        anchors.top: labelTotal.bottom
+        anchors.topMargin: Theme.ph(0.02)
+        height: visible ? Theme.ph(0.06) : 0
+        width: Theme.pw(0.85)
+        anchors.horizontalCenter: parent.horizontalCenter
+        QButton {
+            id: btnERC20
+            width: parent.width
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: "ERC-20"
+            onClicked: {
+                pageERC20.show()
+            }
+        }
+    }
+
     QButton {
         id: btnSync
         width: Theme.buttonWidth * 1.2
-        anchors.top: labelTotal.bottom
-        anchors.topMargin: Theme.ph(0.07)
+        anchors.top: areaERC20.bottom
+        anchors.topMargin: Theme.ph(0.02)
         anchors.right: parent.right
         anchors.rightMargin: parent.width * 0.53
         text: Lang.txtSyncBalance
@@ -341,8 +374,8 @@ Rectangle {
     QButton {
         id: btnCreate
         width: Theme.buttonWidth * 1.2
-        anchors.top: labelTotal.bottom
-        anchors.topMargin: Theme.ph(0.07)
+        anchors.top: areaERC20.bottom
+        anchors.topMargin: Theme.ph(0.02)
         anchors.left: parent.left
         anchors.leftMargin: parent.width * 0.53
         text: Lang.txtCreateTransaction
@@ -404,6 +437,14 @@ Rectangle {
 
         onClosed: {
             textUtxo.inputFocus = false
+        }
+    }
+
+    ERC20 {
+        id: pageERC20
+        anchors.fill: parent
+        onBackClicked: {
+            pageERC20.hide()
         }
     }
 

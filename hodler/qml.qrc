@@ -85,5 +85,6 @@
         <file>language/ko_ko.js</file>
         <file>language/pl_pl.js</file>
         <file>pages/settings/DialogFontSize.qml</file>
+        <file>images/IconUSDT.png</file>
     </qresource>
 </RCC>

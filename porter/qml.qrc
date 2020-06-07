@@ -119,5 +119,11 @@
         <file>language/pl_pl.js</file>
         <file>serviceagent/XRPAgentRippleCom.qml</file>
         <file>pages/settings/DialogFontSize.qml</file>
+        <file>images/IconUSDT.png</file>
+        <file>pages/address/ERC20.qml</file>
+        <file>pages/address/ERC20List.qml</file>
+        <file>pages/address/ERC20ListItem.qml</file>
+        <file>pages/address/ERC20Transfer.qml</file>
+        <file>pages/address/ERC20TransferCode.qml</file>
     </qresource>
 </RCC>

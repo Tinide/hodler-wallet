@@ -144,6 +144,8 @@ QtObject {
     property string txtEnterMessage:       "Enter the message"
     property string txtEnterSignature:     "Enter the signature or click the right button to scan"
     property string txtQRCapacityTip:      "QR capacity ( singal page )"
+    property string txtContract:           "contract"
+    property string txtContractName:       "contract name"
     property string msgBusy:               "system busy"
     property string msgNoRecord:           "No record"
     property string msgInputEmpty:         "Empty input"

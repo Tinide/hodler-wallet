@@ -285,17 +285,18 @@ Rectangle {
         text: Lang.txtFrom + " :"
     }
 
-    Label {
+    QTextField {
         id: labelFromAddress
+        selectByMouse: true
         width: Theme.pw(0.9)
-        height: Theme.ph(0.06)
+        height: Theme.ph(0.1)
         anchors.top: labelFrom.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        color: Config.coinColor(coinType)
+        //color: Config.coinColor(coinType)
         font.pointSize: Theme.middleSize
-        wrapMode: Text.Wrap
-        horizontalAlignment: Text.AlignLeft
-        verticalAlignment: Text.AlignVCenter
+//        wrapMode: Text.Wrap
+//        horizontalAlignment: Text.AlignLeft
+//        verticalAlignment: Text.AlignVCenter
         text: fromAddress
     }
 
@@ -314,17 +315,18 @@ Rectangle {
         text: Lang.txtTo + " :"
     }
 
-    Label {
+    QTextField {
         id: labelToAddress
+        selectByMouse: true
         width: Theme.pw(0.9)
-        height: Theme.ph(0.06)
+        height: Theme.ph(0.1)
         anchors.top: labelTo.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        color: Config.coinColor(coinType)
+        //color: Config.coinColor(coinType)
         font.pointSize: Theme.middleSize
-        wrapMode: Text.Wrap
-        horizontalAlignment: Text.AlignLeft
-        verticalAlignment: Text.AlignVCenter
+//        wrapMode: Text.Wrap
+//        horizontalAlignment: Text.AlignLeft
+//        verticalAlignment: Text.AlignVCenter
         text: toAddress
     }
 

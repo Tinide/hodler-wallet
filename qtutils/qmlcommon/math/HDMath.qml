@@ -10,6 +10,8 @@ QtObject {
     function sub(v1,v2) { return Ma.sub(v1, v2) }
     function mul(v1,v2) { return Ma.mul(v1, v2) }
     function div(v1,v2) { return Ma.div(v1, v2) }
+    function fdiv(v1,v2) { return Ma.fdiv(v1, v2) }
+    function pow(v1,v2) { return Ma.pow(v1, v2) }
     function cmp(v1,v2) { return Ma.cmp(v1, v2) }
     function toString(v) { return Ma.toString(v) }
 

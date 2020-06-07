@@ -233,7 +233,7 @@ QtObject {
     }
 
     function coinAddrPrefix(coinType) {
-        var prefix = "Bitcoin"
+        var prefix = ""
         switch (coinType) {
         case "BTC":
             prefix = "bitcoin:"
