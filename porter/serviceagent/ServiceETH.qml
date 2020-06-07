@@ -106,9 +106,9 @@ Item {
     function createTransactionRequest(fromAddr,toAddr,amount,fee,dataset) {
         var req = {}
         try {
-            req = JSON.parse(dataset)
+            var ds = JSON.parse(dataset)
+            req["n"] = ds["n"]
         } catch (e) {
-            req = {}
             req["n"] = "0"
         }
         req["f"] = fromAddr

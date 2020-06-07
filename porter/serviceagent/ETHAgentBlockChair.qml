@@ -12,7 +12,7 @@ AgentBase {
 
     property int reqPing: -1
     property string subPing: "/stats"
-    property string subAddr: "/dashboards/address/:addr:?limit=30"
+    property string subAddr: "/dashboards/address/:addr:?limit=30&erc_20=true"
     property string subTx: "/dashboards/transaction/:txid:"
     property string subSendTx: "/push/transaction"
 
@@ -150,6 +150,10 @@ AgentBase {
             }
             var jdata = {}
             jdata["n"] = "" + (tc - rc)
+            if (typeof(dataset["layer_2"]["erc_20"]) != "undefined") {
+                var erc20 = dataset["layer_2"]["erc_20"]
+                jdata["erc20"] = erc20
+            }
             var jstr = JSON.stringify(jdata, "", "  ")
             Config.balanceResult(addr, bala, pend, total, jstr)
             //Config.debugOut(domain+" - LTC: "+addr+", b:"+bstr+", p:"+pstr+", t:"+tstr)//+", j:"+jstr)
