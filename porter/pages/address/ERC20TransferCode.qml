@@ -22,7 +22,6 @@ Rectangle {
     property int curPage: 0
     property int maxPage: 0
     property int capPage: Store.getQRCapacity() - 150
-    property int utxoamount: 0
 
     signal backClicked()
 
@@ -82,10 +81,10 @@ Rectangle {
         qrd["m"] = "TX"
         qrd["c"] = curPage
         qrd["p"] = maxPage
-        qrd["t"] = coinType
+        qrd["t"] = "ERC20"
         qrd["f"] = address
         qrd["o"] = inputAddress.text
-        qrd["a"] = parseFloat(inputAmount.text)
+        qrd["a"] = 0
         qrd["e"] = parseFloat(inputFee.text)
 
         if (curPage == maxPage) {
@@ -110,6 +109,10 @@ Rectangle {
 
         var jsonObj = agent.createTransactionRequest(coinType,address,inputAddress.text,
                                                  inputAmount.text,inputFee.text,rawUtxo)
+        var fmp = HDMath.pow(10, tdecimals)
+        var fval = HDMath.mul(inputAmount.text, fmp)
+        jsonObj["co"] = tcontract
+        jsonObj["v"] = fval
         if (jsonObj === null) {
             Theme.showToast(Lang.msgCreateTxFailed)
             hide()
