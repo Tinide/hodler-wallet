@@ -76,6 +76,7 @@ Item {
         case "BSV":
             return servbch.createTransactionRequest(fromAddr,toAddr,amount,fee,dataset)
         case "ETH":
+        case "ERC20":
             return serveth.createTransactionRequest(fromAddr,toAddr,amount,fee,dataset)
         case "XRP":
             return servxrp.createTransactionRequest(fromAddr,toAddr,amount,fee,dataset)
@@ -143,6 +144,7 @@ Item {
             servbsv.searchTransaction(txreq)
             break
         case "ETH":
+        case "ERC20":
             serveth.searchTransaction(txreq)
             break
         case "XRP":

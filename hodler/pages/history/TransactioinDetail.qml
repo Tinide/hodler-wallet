@@ -61,6 +61,7 @@ Rectangle {
         case "BTC":
         case "LTC":
         case "ETH":
+        case "ERC20":
         case "ETC":
         case "XRP":
             requestDecode(rawTransaction)
@@ -83,7 +84,7 @@ Rectangle {
                                    "totalInValue": parseInt(utxoamount),
                                    "rawtx": rtx
                                 }]}
-        } else if (Config.isWeitCoinType(coinType)) {
+        } else if (Config.isWeitCoinType(coinType) || coinType === "ERC20") {
             jsonObj = {"params": [{
                                    "chainID": Config.mainnet ? "1" : "3",
                                    "rawtx": rtx
@@ -95,8 +96,12 @@ Rectangle {
         } else {
             return false
         }
+        var methodPre = coinType
+        if (coinType === "ERC20") {
+            methodPre = "ETH"
+        }
         iconLoading.show()
-        reqID = JsonRpc.rpcCall(coinType + ".DecodeRawTxOut", jsonObj, "",
+        reqID = JsonRpc.rpcCall(methodPre + ".DecodeRawTxOut", jsonObj, "",
                                 Config.rpcLocal, Config.rpcLocalPort, Config.rpcLocalTls)
     }
 
@@ -123,7 +128,7 @@ Rectangle {
                     amount = Config.coinsAmountString(am, coinType)
                     fee = Config.coinsAmountString(fe, coinType)
                     changeback = Config.coinsAmountString(ch, coinType)
-                } else if (Config.isWeitCoinType(coinType)) {
+                } else if (Config.isWeitCoinType(coinType) || coinType === "ERC20") {
                     reply["result"]["raw"] = rawTransaction
                     jsonTransaction = JSON.stringify(reply["result"], "", " ")
                     var to = reply["result"]["recipient"]
@@ -137,7 +142,9 @@ Rectangle {
 //                    var gf = HDMath.mul(gl, gp)
 //                    fee = HDMath.weiToEth(gf)
                     var vw = reply["result"]["value"]
-                    amount = HDMath.weiToEth(vw)
+                    if (coinType !== "ERC20") {
+                        amount = HDMath.weiToEth(vw)
+                    }
                     //txid = reply["result"]["txid"]
                 } else if (coinType == "XRP") {
                     reply["result"]["raw"] = rawTransaction

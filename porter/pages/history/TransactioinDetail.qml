@@ -70,6 +70,7 @@ Rectangle {
         case "BTC":
         case "LTC":
         case "ETH":
+        case "ERC20":
         case "ETC":
         case "XRP":
             rc = requestDecode(rawTransaction)
@@ -94,7 +95,7 @@ Rectangle {
                                    "totalInValue": parseInt(utxoamount),
                                    "rawtx": rtx
                                 }]}
-        } else if (agent.isWeitCoinType(coinType)) {
+        } else if (agent.isWeitCoinType(coinType) || coinType === "ERC20") {
             jsonObj = {"params": [{
                                    "chainID": Config.mainnet ? "1" : "3",
                                    "rawtx": rtx
@@ -106,7 +107,11 @@ Rectangle {
         } else {
             return false
         }
-        reqID = JsonRpc.rpcCall(coinType + ".DecodeRawTxOut", jsonObj, "",
+        var methodPre = coinType
+        if (coinType === "ERC20") {
+            methodPre = "ETH"
+        }
+        reqID = JsonRpc.rpcCall(methodPre + ".DecodeRawTxOut", jsonObj, "",
                                 Config.rpcLocal, Config.rpcLocalPort, Config.rpcLocalTls)
     }
 
@@ -139,7 +144,7 @@ Rectangle {
                     amount = Config.coinsAmountString(am, coinType)
                     fee = Config.coinsAmountString(fe, coinType)
                     changeback = ch
-                } else if (agent.isWeitCoinType(coinType)) {
+                } else if (agent.isWeitCoinType(coinType) || coinType === "ERC20") {
                     reply["result"]["raw"] = rawTransaction
                     jsonTransaction = JSON.stringify(reply["result"], "", " ")
                     var to = reply["result"]["recipient"]
@@ -153,7 +158,9 @@ Rectangle {
 //                    var gf = HDMath.mul(gl, gp)
 //                    fee = HDMath.weiToEth(gf)
                     var vw = reply["result"]["value"]
-                    amount = HDMath.weiToEth(vw)
+                    if (coinType !== "ERC20") {
+                        amount = HDMath.weiToEth(vw)
+                    }
                     txid = reply["result"]["txid"]
                 } else if (coinType == "XRP") {
                     reply["result"]["raw"] = rawTransaction

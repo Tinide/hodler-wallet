@@ -168,6 +168,9 @@ Rectangle {
                 return
             }
             signedTx = reply["result"]["result"]
+            if (coinType === "ERC20") {
+                utxoamount = JSON.stringify(rawset, "", " ")
+            }
             Store.appendSignHistory(coinType, "", fromAddr, toAddr, "" + utxoamount, "" + amount, fee, signedTx)
             Config.historyChanged()
         }
