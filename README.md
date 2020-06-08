@@ -208,13 +208,13 @@ bitcoin:
 ![btcaddr](./doc/btcaddr.png)
 
 litecoin:
-- LSPqfuL6N9gVGWJk28xHrNhaGAM3Jjkj9M
+- LYdhar6MnvWvbkXg1NHdDiVgKMeUd3qZKU
 
 bitcoincash:
-- qz8t3ce2wpgd3qdw7dkv0w7gdf83jnsmzu4mcm83ea
+- qq8n5ys4kgem8huhj669vesttq7dyarmxsse8dep88
 
 ethereum:
-- 0x61ef9781aa572f73321f7afbf7c5c8897e4fa9fb
+- 0x33835198dd1747b8fb4e688c76ac79457c82cc04
 
 ripple:
 - rDi3LBiM7UTcDtx9wnPXf83k4BuX7KUy6o
