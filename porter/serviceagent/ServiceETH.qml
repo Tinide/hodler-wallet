@@ -17,7 +17,8 @@ Item {
     property int curServiceIdx: 0
     property string blockTime: "-"
     property int blockHeight: 0
-    property string gaslimit: "25200"
+    property string gaslimit: "21000"
+    property string gaslimitERC20: "210000"
     property string gasPrice: "23000000000"
 
 
@@ -48,6 +49,10 @@ Item {
     }
 
     function syncBalance(addr) {
+        agentBlockChair.syncBalance(addr)
+        return true
+
+        /*
         var idx = chooseService()
         if (idx >= 0) {
             addr = addr.toLowerCase()
@@ -56,6 +61,7 @@ Item {
         }
         Theme.showToast(coinType + " - syncBalance: no aliable service")
         return false
+        */
     }
 
     function sendTransaction(txid,rawtx) {
@@ -116,6 +122,30 @@ Item {
         req["gl"] = gaslimit
         var feewei = HDMath.ethToWei(fee)
         var gp = HDMath.div(feewei, gaslimit)
+        req["gp"] = gp
+        req["fe"] = fee
+        req["v"] = HDMath.ethToWei(amount)
+        if (Config.mainnet) {
+            req["c"] = "1"
+        } else {
+            req["c"] = "3"
+        }
+        return req
+    }
+
+    function createTransactionRequestERC20(fromAddr,toAddr,amount,fee,dataset) {
+        var req = {}
+        try {
+            var ds = JSON.parse(dataset)
+            req["n"] = ds["n"]
+        } catch (e) {
+            req["n"] = "0"
+        }
+        req["f"] = fromAddr
+        req["t"] = toAddr
+        req["gl"] = gaslimitERC20
+        var feewei = HDMath.ethToWei(fee)
+        var gp = HDMath.div(feewei, gaslimitERC20)
         req["gp"] = gp
         req["fe"] = fee
         req["v"] = HDMath.ethToWei(amount)
