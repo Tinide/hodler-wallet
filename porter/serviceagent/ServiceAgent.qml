@@ -294,6 +294,7 @@ Item {
         case "BCH":
         case "BSV":
         case "ETH":
+        case "ERC20":
         case "XRP":
             if (confims >= 6) { rc = true }
             break
