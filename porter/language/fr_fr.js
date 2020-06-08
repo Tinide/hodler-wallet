@@ -115,6 +115,8 @@ function translate4(ptr) {
     ptr.txtEnterMessage       = "Entrez le message"
     ptr.txtEnterSignature     = "Saisissez la signature ou cliquez sur le bouton droit pour numériser"
     ptr.txtQRCapacityTip      = "Capacité QR (une seule page)"
+    ptr.txtContract           = "Contrat"
+    ptr.txtContractName       = "Contrat"
     ptr.msgBusy               = "le système est occupé"
     ptr.msgNoRecord           = "Enregistrement non trouvé"
     ptr.msgInputEmpty         = "Entrée vide"

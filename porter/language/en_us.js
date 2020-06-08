@@ -115,6 +115,8 @@ function translate0(ptr) {
     ptr.txtEnterMessage       = "Enter the message"
     ptr.txtEnterSignature     = "Enter the signature or click the right button to scan"
     ptr.txtQRCapacityTip      = "QR capacity ( singal page )"
+    ptr.txtContract           = "contract"
+    ptr.txtContractName       = "contract name"
     ptr.msgBusy               = "system busy"
     ptr.msgNoRecord           = "No record"
     ptr.msgInputEmpty         = "Empty input"

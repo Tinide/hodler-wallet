@@ -115,6 +115,8 @@ function translate7(ptr) {
     ptr.txtEnterMessage       = "Ingrese el mensaje"
     ptr.txtEnterSignature     = "Ingrese la firma o haga clic en el botón derecho para escanear"
     ptr.txtQRCapacityTip      = "Capacidad QR (página única)"
+    ptr.txtContract           = "contrato"
+    ptr.txtContractName       = "contrato"
     ptr.msgBusy               = "Sistema ocupada"
     ptr.msgNoRecord           = "no recuerdo"
     ptr.msgInputEmpty         = "Entrada vacía"

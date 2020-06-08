@@ -115,6 +115,8 @@ function translate1(ptr) {
     ptr.txtEnterMessage       = "メッセージを入力してください"
     ptr.txtEnterSignature     = "署名を入力するか、右ボタンをクリックしてスキャンします"
     ptr.txtQRCapacityTip      = "QRキャパシティ（単一ページ）"
+    ptr.txtContract           = "契約する"
+    ptr.txtContractName       = "契約名"
     ptr.msgBusy               = "システムビジー"
     ptr.msgNoRecord           = "記録なし"
     ptr.msgInputEmpty         = "空の入力"

@@ -115,6 +115,8 @@ function translate2(ptr) {
     ptr.txtEnterMessage       = "메시지를 입력"
     ptr.txtEnterSignature     = "서명을 입력하거나 오른쪽 버튼을 클릭하여 스캔하십시오"
     ptr.txtQRCapacityTip      = "QR 용량 (단일 페이지)"
+    ptr.txtContract           = "계약"
+    ptr.txtContractName       = "계약 명"
     ptr.msgBusy               = "시스템이 바쁘다"
     ptr.msgNoRecord           = "기록이 없습니다"
     ptr.msgInputEmpty         = "빈 입력"

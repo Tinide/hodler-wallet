@@ -114,6 +114,8 @@ function translate9(ptr) {
     ptr.txtEnterMessage       = "輸入消息"
     ptr.txtEnterSignature     = "輸入簽名或點擊右側按鈕掃描"
     ptr.txtQRCapacityTip      = "二維碼單頁容量"
+    ptr.txtContract           = "合約"
+    ptr.txtContractName       = "合約名稱"
     ptr.msgBusy               = "系統忙"
     ptr.msgNoRecord           = "沒有找到記錄"
     ptr.msgInputEmpty         = "輸入不能為空"

@@ -115,6 +115,8 @@ function translate3(ptr) {
     ptr.txtEnterMessage       = "Geben Sie die Nachricht ein"
     ptr.txtEnterSignature     = "Geben Sie die Signatur ein oder klicken Sie zum Scannen auf die rechte Schaltfläche"
     ptr.txtQRCapacityTip      = "QR-Kapazität (einzelne Seite)"
+    ptr.txtContract           = "Vertrag"
+    ptr.txtContractName       = "Vertragsname"
     ptr.msgBusy               = "System ist beschäftigt"
     ptr.msgNoRecord           = "Keine Aufzeichnung"
     ptr.msgInputEmpty         = "Eingabe leeren"

@@ -115,6 +115,8 @@ function translate8(ptr) {
     ptr.txtEnterMessage       = "Voer die boodskap in"
     ptr.txtEnterSignature     = "Voer die handtekening in of klik op die regte knoppie om te skandeer"
     ptr.txtQRCapacityTip      = "QR kapasiteit (enkele bladsy)"
+    ptr.txtContract           = "kontrak"
+    ptr.txtContractName       = "kontraknaam"
     ptr.msgBusy               = "stelsel besig"
     ptr.msgNoRecord           = "rekord nie gevind nie"
     ptr.msgInputEmpty         = "Leë insette"

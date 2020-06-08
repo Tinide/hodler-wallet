@@ -114,6 +114,8 @@ function translate10(ptr) {
     ptr.txtEnterMessage       = "输入消息"
     ptr.txtEnterSignature     = "输入签名或点击右侧按钮扫描"
     ptr.txtQRCapacityTip      = "二维码单页容量"
+    ptr.txtContract           = "合约"
+    ptr.txtContractName       = "合约名"
     ptr.msgBusy               = "系统忙"
     ptr.msgNoRecord           = "没有找到记录"
     ptr.msgInputEmpty         = "输入不能为空"
