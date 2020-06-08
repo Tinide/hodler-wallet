@@ -50,6 +50,7 @@ Rectangle {
         toAddress = item["o"]
         rawTransaction = item["d"]
         jsonTransaction = rawTransaction
+        utxoamount = ""
 
         hasFromAddr = Store.checkAddress(fromAddress)
 

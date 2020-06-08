@@ -51,11 +51,15 @@ Rectangle {
         toAddress = item["toAddr"]
         amount = "" + item["amount"]
         fee = "" + item["fee"]
-        if (Config.isUtxoCoinType(coinType)) {
+        if (Config.isUtxoCoinType(coinType) || coinType === "ERC20") {
             utxoamount = item["utxoamount"]
         }
         rawTransaction = item["raw"]
         jsonTransaction = rawTransaction
+
+        labelCoinType.text = Lang.txtCoinType + " :  " + coinType
+        labelUnit1.text = coinType
+        labelUnit2.text = coinType
 
         switch (coinType) {
         case "BTC":
@@ -148,6 +152,12 @@ Rectangle {
                         amount = HDMath.weiToEth(vw)
                     }
                     //txid = reply["result"]["txid"]
+                    if (coinType === "ERC20") {
+                        var eset = JSON.parse(utxoamount)
+                        labelCoinType.text = Lang.txtCoinType + " :  " + eset["tokenName"]
+                        labelUnit1.text = eset["symbol"]
+                        labelUnit2.text = "ETH"
+                    }
                 } else if (coinType == "XRP") {
                     reply["result"]["raw"] = rawTransaction
                     jsonTransaction = JSON.stringify(reply["result"], "", " ")
