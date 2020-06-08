@@ -13,7 +13,7 @@ QtObject {
     }
 
     property string appTitle: "Porter"
-    property string appVersion: "0.2.0"
+    property string appVersion: "0.2.1"
 
     property string txtLanguage: "Language"
     property string txtENUS: "English"
