@@ -61,9 +61,16 @@ Rectangle {
             amount = "" + item["amount"]
             fee = "" + item["fee"]
         }
+        if (coinType === "ERC20") {
+            utxoamount = item["utxoamount"]
+        }
         rawTransaction = item["raw"]
         jsonTransaction = rawTransaction
         status = ss
+
+        labelCoinType.text = Lang.txtCoinType + " :  " + coinType
+        labelUnit1.text = coinType
+        labelUnit2.text = coinType
 
         var rc = false
         switch (coinType) {
@@ -164,6 +171,12 @@ Rectangle {
                         amount = HDMath.weiToEth(vw)
                     }
                     txid = reply["result"]["txid"]
+                    if (coinType === "ERC20") {
+                        var eset = JSON.parse(utxoamount)
+                        labelCoinType.text = Lang.txtCoinType + " :  " + eset["tn"]
+                        labelUnit1.text = eset["sm"]
+                        labelUnit2.text = "ETH"
+                    }
                 } else if (coinType == "XRP") {
                     reply["result"]["raw"] = rawTransaction
                     jsonTransaction = JSON.stringify(reply["result"], "", " ")
@@ -297,12 +310,12 @@ Rectangle {
     QTextField {
         id: labelFromAddress
         selectByMouse: true
-        width: Theme.pw(0.9)
+        width: Theme.pw(0.91)
         height: Theme.ph(0.1)
         anchors.top: labelFrom.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         //color: Config.coinColor(coinType)
-        font.pointSize: Theme.middleSize
+        font.pointSize: Theme.baseSize
 //        wrapMode: Text.Wrap
 //        horizontalAlignment: Text.AlignLeft
 //        verticalAlignment: Text.AlignVCenter
@@ -327,12 +340,12 @@ Rectangle {
     QTextField {
         id: labelToAddress
         selectByMouse: true
-        width: Theme.pw(0.9)
+        width: Theme.pw(0.91)
         height: Theme.ph(0.1)
         anchors.top: labelTo.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         //color: Config.coinColor(coinType)
-        font.pointSize: Theme.middleSize
+        font.pointSize: Theme.baseSize
 //        wrapMode: Text.Wrap
 //        horizontalAlignment: Text.AlignLeft
 //        verticalAlignment: Text.AlignVCenter
@@ -377,7 +390,6 @@ Rectangle {
             horizontalAlignment: Text.AlignLeft
             font.pointSize: Theme.mediumSize
             color: Theme.lightColor1
-            text: coinType
         }
     }
 
@@ -417,7 +429,6 @@ Rectangle {
             horizontalAlignment: Text.AlignLeft
             font.pointSize: Theme.mediumSize
             color: Theme.lightColor1
-            text: coinType
         }
     }
 

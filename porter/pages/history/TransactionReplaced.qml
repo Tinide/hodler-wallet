@@ -74,7 +74,7 @@ Rectangle {
                 Theme.showToast(Lang.msgBalanceNotEnough)
                 return false
             }
-        } else if (agent.isWeitCoinType(coinType)) {
+        } else if (agent.isWeitCoinType(coinType) || coinType === "ERC20") {
 //            var va = HDMath.ethToWei(labelAmountValue.text)
 //            var vf = HDMath.ethToWei(labelFeeValue.text)
 //            var vb = HDMath.ethToWei(amount)
@@ -95,17 +95,21 @@ Rectangle {
             }
         }
 
+        var methodPre = coinType
+        if (coinType === "ERC20") {
+            methodPre = "ETH"
+        }
         var jsonObj = {"params": [{
                            "address": fromAddress,
                            "mainnet": Config.mainnet
                         }]}
-        reqIDAddr1 = JsonRpc.rpcCall(coinType + ".AddressValidate", jsonObj, "",
+        reqIDAddr1 = JsonRpc.rpcCall(methodPre + ".AddressValidate", jsonObj, "",
                                      Config.rpcLocal, Config.rpcLocalPort, Config.rpcLocalTls)
         jsonObj = {"params": [{
                            "address": toAddress,
                            "mainnet": Config.mainnet
                         }]}
-        reqIDAddr2 = JsonRpc.rpcCall(coinType + ".AddressValidate", jsonObj, "",
+        reqIDAddr2 = JsonRpc.rpcCall(methodPre + ".AddressValidate", jsonObj, "",
                                      Config.rpcLocal, Config.rpcLocalPort, Config.rpcLocalTls)
 
         return true
@@ -159,15 +163,21 @@ Rectangle {
             }
             reqID = JsonRpc.rpcCall(coinType + ".CreateRawTx", {"params": jsonObj}, "",
                                     Config.rpcLocal, Config.rpcLocalPort, Config.rpcLocalTls)
-        } else if (agent.isWeitCoinType(coinType)) {
+        } else if (agent.isWeitCoinType(coinType) || coinType === "ERC20") {
             var dset = {}
             dset["n"] = nonce
             dset = JSON.stringify(dset)
             jsonObj = agent.createTransactionRequest(coinType,fromAddress,toAddress,
                                                      labelAmountValue.text,labelFeeValue.text,dset)
-            if (jsonObj === null) {
-                Theme.showToast(Lang.msgCreateTxFailed)
-                hide()
+            if (coinType === "ERC20") {
+                var eset = JSON.parse(utxoamount)
+                var fmp = HDMath.pow(10, eset["td"])
+                var fval = HDMath.mul(labelAmountValue.text, fmp)
+                jsonObj["co"] = eset["co"]
+                jsonObj["sm"] = eset["sm"]
+                jsonObj["tn"] = eset["tn"]
+                jsonObj["td"] = eset["td"]
+                jsonObj["v"] = fval
             }
             if (Config.debugMode) {
                 rawtx = JSON.stringify(jsonObj, "", "  ")

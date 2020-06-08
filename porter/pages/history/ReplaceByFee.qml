@@ -26,13 +26,20 @@ Rectangle {
 
         labelAmountValue.text = amount
         labelFeeValue.text = fee
+        labelUnit1.text = coinType
+        labelUnit2.text = coinType
 
         if (agent.isUtxoCoinType(coinType)) {
             parseUtxoset()
-        } else if (agent.isWeitCoinType(coinType)) {
+        } else if (agent.isWeitCoinType(coinType) || coinType === "ERC20") {
             try {
                 var dataset = JSON.parse(jsonTransaction)
                 nonce = "" + dataset["nonce"]
+                if (coinType === "ERC20") {
+                    var eset = JSON.parse(utxoamount)
+                    labelUnit1.text = eset["sm"]
+                    labelUnit2.text = "ETH"
+                }
             } catch(e) {
                 Theme.showToast(e)
                 hide()
@@ -202,7 +209,6 @@ Rectangle {
             horizontalAlignment: Text.AlignLeft
             font.pointSize: Theme.mediumSize
             color: Theme.lightColor1
-            text: coinType
         }
     }
 
@@ -252,7 +258,6 @@ Rectangle {
             horizontalAlignment: Text.AlignLeft
             font.pointSize: Theme.mediumSize
             color: Theme.lightColor1
-            text: coinType
         }
     }
 
@@ -276,7 +281,7 @@ Rectangle {
                     labelAmountValue.inputFocus = true
                     return
                 }
-            } else if (agent.isWeitCoinType(coinType)) {
+            } else if (agent.isWeitCoinType(coinType) || coinType === "ERC20") {
                 infee = labelFeeValue.text
             } else {
                 infee = labelFeeValue.text

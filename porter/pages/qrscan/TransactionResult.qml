@@ -61,6 +61,7 @@ Rectangle {
             fee = item["fe"]
             labelTransaction.text = "ERC-20 " + item["tn"]
             labelUnit1.text = item["sm"]
+            utxoamount = JSON.stringify(item, "", " ")
         } else if (coinType == "XRP") {
             amount = "" + item["a"]
             fee = item["fe"]
