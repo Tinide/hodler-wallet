@@ -22,7 +22,7 @@ Rectangle {
     property int curPage: 0
     property int maxPage: 0
     property int capPage: Store.getQRCapacity() - 150
-    property int utxoamount: 0
+    property string utxoamount: "0"
 
     signal backClicked()
 
@@ -45,7 +45,7 @@ Rectangle {
         visible = true
         opacity = 1
 
-        utxoamount = parseInt(_pageTransactionDetail.utxoamount)
+        utxoamount = _pageTransactionDetail.utxoamount
         if (checkAddress() === false) {
             hide()
             return
@@ -123,8 +123,8 @@ Rectangle {
         if (agent.isUtxoCoinType(coinType)) {
             qrd["a"] = utxoamount
         } else {
-            qrd["a"] = parseFloat(labelAmountValue.text)
-            qrd["e"] = parseFloat(labelFeeValue.text)
+            qrd["a"] = labelAmountValue.text
+            qrd["e"] = labelFeeValue.text
         }
         if (curPage == maxPage) {
             qrd["d"] = rawtx.substr((curPage - 1) * capPage)
@@ -149,7 +149,7 @@ Rectangle {
         if (agent.isUtxoCoinType(coinType)) {
             var am = Config.coinsAmountValue(labelAmountValue.text, coinType)
             var fe = Config.coinsAmountValue(labelFeeValue.text, coinType)
-            var uam = utxoamount
+            var uam = parseInt(utxoamount)
             jsonObj = agent.createReplacedTransactionRequest(coinType,fromAddress,toAddress,
                                                                  am,fe,uam,txins)
             //console.info(JSON.stringify(jsonObj, "", "  "))

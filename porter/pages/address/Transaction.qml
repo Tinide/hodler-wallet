@@ -118,8 +118,8 @@ Rectangle {
         if (agent.isUtxoCoinType(coinType)) {
             qrd["a"] = utxoamount
         } else {
-            qrd["a"] = parseFloat(inputAmount.text)
-            qrd["e"] = parseFloat(inputFee.text)
+            qrd["a"] = inputAmount.text
+            qrd["e"] = inputFee.text
         }
         if (curPage == maxPage) {
             qrd["d"] = rawtx.substr((curPage - 1) * capPage)
