@@ -17,9 +17,9 @@ Item {
     property int curServiceIdx: 0
     property string blockTime: "-"
     property int blockHeight: 0
-    property string gaslimit: "21000"
+    property string gaslimit: "23000"
     property string gaslimitERC20: "210000"
-    property string gasPrice: "23000000000"
+    property string gasPrice: "26000000000"
 
 
     function start() {
