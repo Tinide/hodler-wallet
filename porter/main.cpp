@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_IOS
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     font.setPointSize(7);
-    font.setFamily("Courier New");
+    font.setFamily("Kohinoor Devanagari");
 #endif
     app.setFont(font);
 
