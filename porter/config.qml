@@ -15,7 +15,7 @@ QtObject {
     signal balanceResult(string addr, string ba, string pa, string ta, string dat)
     signal transactionResult(string td, string result)
 
-    property bool debugMode: true
+    property bool debugMode: false
     property string rpcLocal: "127.0.0.1"
     property int  rpcLocalPort: 35911
     property bool rpcLocalTls: true
