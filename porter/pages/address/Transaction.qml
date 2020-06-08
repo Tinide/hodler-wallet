@@ -22,7 +22,7 @@ Rectangle {
     property int curPage: 0
     property int maxPage: 0
     property int capPage: Store.getQRCapacity() - 150
-    property int utxoamount: 0
+    property string utxoamount: ""
     // bch,bsv
     property string inputamounts: ""
 
@@ -151,7 +151,7 @@ Rectangle {
                 Theme.showToast(Lang.msgCreateTxFailed)
                 hide()
             }
-            utxoamount = jsonObj[0]["utxoamount"]
+            utxoamount = "" + jsonObj[0]["utxoamount"]
             if (coinType == "BCH" || coinType == "BSV") {
                 inputamounts = JSON.stringify(jsonObj[0]["inputs_amounts"])
             }

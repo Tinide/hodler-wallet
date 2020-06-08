@@ -19,9 +19,7 @@ Rectangle {
     property string coinType: ""
     property string fromAddress: ""
     property string toAddress: ""
-    property int utxoamount: 0
-    property int changeback: 0
-    property string amount: ""
+    property string utxoamount: ""
     property string fee: ""
     property string rawTransaction: ""
     property string jsonTransaction: ""
@@ -51,7 +49,7 @@ Rectangle {
         jsonTransaction = rawTransaction
 
         if (agent.isUtxoCoinType(coinType)) {
-            utxoamount = item["a"]
+            utxoamount = "" + item["a"]
         } else if (agent.isWeitCoinType(coinType)) {
             amount = "" + item["a"]
             fee = item["fe"]
@@ -88,7 +86,7 @@ Rectangle {
                                    "mainnet": Config.mainnet,
                                    "fromAddr": fromAddress,
                                    "toAddr": toAddress,
-                                   "totalInValue": utxoamount,
+                                   "totalInValue": parseInt(utxoamount),
                                    "rawtx": rtx
                                 }]}
         } else if (agent.isWeitCoinType(coinType)) {
@@ -134,7 +132,6 @@ Rectangle {
                     spendtxs = reply["result"]["spendtx"]
                     amount = Config.coinsAmountString(am, coinType)
                     fee = Config.coinsAmountString(fe, coinType)
-                    changeback = ch
                 } else if (agent.isWeitCoinType(coinType)) {
                     reply["result"]["raw"] = rawTransaction
                     jsonTransaction = JSON.stringify(reply["result"], "", " ")

@@ -20,7 +20,7 @@ Rectangle {
     property string coinType: ""
     property string fromAddress: ""
     property string toAddress: ""
-    property int utxoamount: 0
+    property string utxoamount: ""
     property string amount: ""
     property string fee: ""
     property string changeback: ""
@@ -142,7 +142,7 @@ Rectangle {
                            "mainnet": Config.mainnet,
                            "fromAddr": fromAddress,
                            "toAddr": toAddress,
-                           "totalInValue": utxoamount,
+                           "totalInValue": parseInt(utxoamount),
                            "rawtx": rtx
                         }]}
         reqID = JsonRpc.rpcCall(coinType + ".DecodeRawTxOut", jsonObj, "",

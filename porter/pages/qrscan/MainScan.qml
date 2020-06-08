@@ -21,7 +21,7 @@ Rectangle {
     property string coinType: ""
     property string fromAddr: ""
     property string toAddr: ""
-    property int amount: 0
+    property string amount: ""
     property string raw: ""
     property var callback: null
 
@@ -34,7 +34,7 @@ Rectangle {
         coinType = ""
         fromAddr = ""
         toAddr = ""
-        amount = 0
+        amount = "0"
         raw = ""
 
         active = true
