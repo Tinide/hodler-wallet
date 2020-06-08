@@ -120,6 +120,7 @@ Rectangle {
         var methodPre = coinType
         if (coinType === "ERC20") {
             methodPre = "ETH"
+            console.info(rtx)
         }
         reqID = JsonRpc.rpcCall(methodPre + ".DecodeRawTxOut", jsonObj, "",
                                 Config.rpcLocal, Config.rpcLocalPort, Config.rpcLocalTls)
@@ -168,7 +169,9 @@ Rectangle {
                     var to = reply["result"]["recipient"]
                     var fr = reply["result"]["from"]
                     if (to !== toAddress || fr !== fromAddress) {
-                        throw Lang.txtBadTransaction
+                        if (coinType !== "ERC20") {
+                            throw Lang.txtBadTransaction
+                        }
                     }
                 } else if (coinType == "XRP") {
                     reply["result"]["raw"] = rawTransaction

@@ -150,7 +150,9 @@ Rectangle {
                     var to = reply["result"]["recipient"]
                     var fr = reply["result"]["from"]
                     if (to !== toAddress || fr !== fromAddress) {
-                        throw Lang.txtBadTransaction
+                        if (coinType !== "ERC20") {
+                            throw Lang.txtBadTransaction
+                        }
                     }
 //                    var va = reply["result"]["value"]
 //                    var gl = reply["result"]["gaslimit"]
