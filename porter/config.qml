@@ -94,6 +94,7 @@ QtObject {
         case "BCH":
         case "BSV":
         case "ETH":
+        case "ERC20":
         case "XRP":
         case "LTC":
 //        case "EOS":
