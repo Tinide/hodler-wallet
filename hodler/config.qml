@@ -39,6 +39,7 @@ QtObject {
             val = 20202065
             break
         case "ETH":
+        case "ERC20":
             val = 20202066
             break
         case "ETC":
@@ -228,6 +229,7 @@ QtObject {
             clr = Theme.lightColor1
             break
         case "ETH":
+        case "ERC20":
             clr = Theme.lightColor7
             break
         case "ETC":
@@ -259,6 +261,7 @@ QtObject {
             iconSource = "qrc:/images/IconLitecoin.png"
             break
         case "ETH":
+        case "ERC20":
             iconSource = "qrc:/images/IconEthereum.png"
             break
         case "BCH":
@@ -287,6 +290,9 @@ QtObject {
         case "ETH":
         case "XRP":
             method = coinType + ".EntropyToAddress"
+            break
+        case "ERC20":
+            method = "ETH.EntropyToAddress"
             break
         case "EOS":
             method = "EOS.EntropyToPublicKey"

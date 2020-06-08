@@ -53,10 +53,18 @@ Rectangle {
         case "BCH":
         case "BSV":
         case "LTC":
-            qrd["a"] = utxoamount
+            qrd["a"]  = utxoamount
+            break
+        case "ERC20":
+            qrd["a"]  = amount
+            qrd["fe"] = fee
+            qrd["co"] = rawset["contract"]
+            qrd["sm"] = rawset["symbol"]
+            qrd["tn"] = rawset["tokenName"]
+            qrd["td"] = rawset["decimal"]
             break
         default:
-            qrd["a"] = amount
+            qrd["a"]  = amount
             qrd["fe"] = fee
         }
         if (curPage == maxPage) {
@@ -109,6 +117,20 @@ Rectangle {
                                    "chainID": rawset["chainID"],
                                    "toAddress": rawset["toAddress"]
                                  }]}
+        } else if (cointype === "ERC20") {
+            jsonObj = {"params": [{
+                                   "entropy": Key.getEntropy(),
+                                   "seed": Config.seed,
+                                   "m1": Config.coinsM1(cointype),
+                                   "m2": Store.getAddressM2(fromaddr),
+                                   "nonce": rawset["nonce"],
+                                   "gasLimit": rawset["gasLimit"],
+                                   "gasPrice": rawset["gasPrice"],
+                                   "value": rawset["value"],
+                                   "chainID": rawset["chainID"],
+                                   "contract": rawset["contract"],
+                                   "toAddress": rawset["toAddress"]
+                                 }]}
         } else if (coinType == "XRP") {
             jsonObj = {"params": [{
                                    "entropy": Key.getEntropy(),
@@ -124,8 +146,14 @@ Rectangle {
                                    "tag": rawset["tag"]
                                  }]}
         }
-        reqID = JsonRpc.rpcCall(cointype + ".SignRawTx", jsonObj, "",
-                                Config.rpcLocal, Config.rpcLocalPort, Config.rpcLocalTls)
+
+        if (coinType === "ERC20") {
+            reqID = JsonRpc.rpcCall("ETH.SignRawTxERC20", jsonObj, "",
+                                    Config.rpcLocal, Config.rpcLocalPort, Config.rpcLocalTls)
+        } else {
+            reqID = JsonRpc.rpcCall(cointype + ".SignRawTx", jsonObj, "",
+                                    Config.rpcLocal, Config.rpcLocalPort, Config.rpcLocalTls)
+        }
     }
 
     Connections {

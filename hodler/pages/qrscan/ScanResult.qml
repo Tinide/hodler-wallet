@@ -53,11 +53,14 @@ Rectangle {
 
         hasFromAddr = Store.checkAddress(fromAddress)
 
-        var reqset
-        if (Config.isUtxoCoinType(coinType)) {
-            utxoamount = item["a"]
-        } else if (Config.isWeitCoinType(coinType)) {
-            try {
+        labelCoinType.text = Lang.txtCoinType + " :  " + coinType
+        labelUnit1.text = coinType
+
+        try {
+            var reqset
+            if (Config.isUtxoCoinType(coinType)) {
+                utxoamount = item["a"]
+            } else if (Config.isWeitCoinType(coinType)) {
                 reqset = JSON.parse(rawTransaction)
                 rawset = {}
                 rawset["chainID"]     = reqset["c"]
@@ -71,28 +74,51 @@ Rectangle {
                 rawset["raw"]         = rawTransaction
                 jsonTransaction = JSON.stringify(rawset, "", "  ")
                 amount = HDMath.weiToEth(reqset["v"])
-//                var gasLimit = reqset["gl"]
-//                var gasPrice = reqset["gp"]
-//                fee = HDMath.mul(gasLimit, gasPrice)
-//                fee = HDMath.weiToEth(fee)
+    //                var gasLimit = reqset["gl"]
+    //                var gasPrice = reqset["gp"]
+    //                fee = HDMath.mul(gasLimit, gasPrice)
+    //                fee = HDMath.weiToEth(fee)
                 fee = reqset["fe"]
-            } catch (e) {
+            } else if (coinType === "ERC20") {
+                reqset = JSON.parse(rawTransaction)
+                rawset = {}
+                rawset["chainID"]     = reqset["c"]
+                rawset["nonce"]       = reqset["n"]
+                rawset["fromAddress"] = reqset["f"]
+                rawset["toAddress"]   = reqset["t"]
+                rawset["value"]       = reqset["v"]
+                rawset["gasLimit"]    = reqset["gl"]
+                rawset["gasPrice"]    = reqset["gp"]
+                rawset["fee"]         = reqset["fe"]
+                rawset["contract"]    = reqset["co"]
+                rawset["symbol"]      = reqset["sm"]
+                rawset["tokenName"]   = reqset["tn"]
+                rawset["decimal"]     = reqset["td"]
+                rawset["raw"]         = rawTransaction
+                jsonTransaction = JSON.stringify(rawset, "", "  ")
+                var fmp = HDMath.pow(10, rawset["decimal"])
+                var fval = HDMath.fdiv(reqset["v"], fmp)
+                amount = fval
+                fee = reqset["fe"]
+                labelCoinType.text = Lang.txtCoinType + " : ERC-20 " + rawset["tokenName"]
+                labelUnit1.text = rawset["symbol"]
+            } else if (coinType == "XRP") {
+                reqset = JSON.parse(rawTransaction)
+                rawset = {}
+                rawset["sequence"]       = reqset["n"]
+                rawset["ledgerSequence"] = reqset["ln"]
+                rawset["fromAddr"]       = reqset["f"]
+                rawset["toAddr"]         = reqset["t"]
+                rawset["value"]          = reqset["v"]
+                rawset["fee"]            = reqset["fe"]
+                rawset["tag"]            = reqset["tag"]
+                jsonTransaction = JSON.stringify(rawset, "", "  ")
+                amount = rawset["value"]
+                fee    = rawset["fee"]
+            } else {
                 return false
             }
-        } else if (coinType == "XRP") {
-            reqset = JSON.parse(rawTransaction)
-            rawset = {}
-            rawset["sequence"]       = reqset["n"]
-            rawset["ledgerSequence"] = reqset["ln"]
-            rawset["fromAddr"]       = reqset["f"]
-            rawset["toAddr"]         = reqset["t"]
-            rawset["value"]          = reqset["v"]
-            rawset["fee"]            = reqset["fe"]
-            rawset["tag"]            = reqset["tag"]
-            jsonTransaction = JSON.stringify(rawset, "", "  ")
-            amount = rawset["value"]
-            fee    = rawset["fee"]
-        } else {
+        } catch (e) {
             return false
         }
 
@@ -190,7 +216,6 @@ Rectangle {
         font.pointSize: Theme.middleSize
         horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignVCenter
-        text: Lang.txtCoinType + " :  " + coinType
     }
 
     Label {
@@ -289,7 +314,6 @@ Rectangle {
             horizontalAlignment: Text.AlignLeft
             font.pointSize: Theme.middleSize
             color: Theme.lightColor1
-            text: coinType
         }
     }
 
@@ -329,7 +353,12 @@ Rectangle {
             horizontalAlignment: Text.AlignLeft
             font.pointSize: Theme.middleSize
             color: Theme.lightColor1
-            text: coinType
+            text: {
+                if (coinType === "ERC20") {
+                    return "ETH"
+                }
+                return coinType
+            }
         }
     }
 
