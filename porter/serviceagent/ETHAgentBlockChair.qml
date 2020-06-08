@@ -174,7 +174,7 @@ AgentBase {
                 && reply["data"] === null) {
                 result = {"confirmations":-2}
                 //Config.transactionResult(txid, JSON.stringify(result))
-                Config.debugOut(reply["context"]["error"])
+                //Config.debugOut(reply["context"]["error"])
                 return
             }
             if (reply["data"]["transaction_hash"] === txid) {
