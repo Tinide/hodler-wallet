@@ -304,6 +304,7 @@ QtObject {
             iconSource = "qrc:/images/IconLitecoin.png"
             break
         case "ETH":
+        case "ERC20":
             iconSource = "qrc:/images/IconEthereum.png"
             break
         case "BCH":

@@ -115,6 +115,7 @@ Item {
             servbsv.sendTransaction(txid, rawpre)
             break
         case "ETH":
+        case "ERC20":
             serveth.sendTransaction(txid, rawtx)
             break
         case "XRP":

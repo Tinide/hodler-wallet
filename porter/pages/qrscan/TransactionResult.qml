@@ -48,11 +48,19 @@ Rectangle {
         rawTransaction = item["d"]
         jsonTransaction = rawTransaction
 
+        labelTransaction.text = Config.coinName(coinType) + " " + Lang.txtSignedTransaction
+        labelUnit1.text = coinType
+
         if (agent.isUtxoCoinType(coinType)) {
             utxoamount = "" + item["a"]
         } else if (agent.isWeitCoinType(coinType)) {
             amount = "" + item["a"]
             fee = item["fe"]
+        } else if (coinType === "ERC20") {
+            amount = "" + item["a"]
+            fee = item["fe"]
+            labelTransaction.text = "ERC-20 " + item["tn"]
+            labelUnit1.text = item["sm"]
         } else if (coinType == "XRP") {
             amount = "" + item["a"]
             fee = item["fe"]
@@ -65,6 +73,7 @@ Rectangle {
         case "BTC":
         case "LTC":
         case "ETH":
+        case "ERC20":
         case "ETC":
         case "XRP":
             rc = requestDecode(rawTransaction)
@@ -94,15 +103,25 @@ Rectangle {
                                    "chainID": Config.mainnet ? "1" : "3",
                                    "rawtx": rtx
                                 }]}
+        } else if (coinType === "ERC20") {
+            jsonObj = {"params": [{
+                                   "chainID": Config.mainnet ? "1" : "3",
+                                   "rawtx": rtx
+                                }]}
         } else if (coinType == "XRP") {
             jsonObj = {"params": [{
                                    "rawtx": rtx
                                 }]}
         } else {
+            iconLoading.hide()
             return false
         }
 
-        reqID = JsonRpc.rpcCall(coinType + ".DecodeRawTxOut", jsonObj, "",
+        var methodPre = coinType
+        if (coinType === "ERC20") {
+            methodPre = "ETH"
+        }
+        reqID = JsonRpc.rpcCall(methodPre + ".DecodeRawTxOut", jsonObj, "",
                                 Config.rpcLocal, Config.rpcLocalPort, Config.rpcLocalTls)
         return true
     }
@@ -132,7 +151,7 @@ Rectangle {
                     spendtxs = reply["result"]["spendtx"]
                     amount = Config.coinsAmountString(am, coinType)
                     fee = Config.coinsAmountString(fe, coinType)
-                } else if (agent.isWeitCoinType(coinType)) {
+                } else if (agent.isWeitCoinType(coinType) || coinType === "ERC20") {
                     reply["result"]["raw"] = rawTransaction
                     jsonTransaction = JSON.stringify(reply["result"], "", " ")
                     var va = reply["result"]["value"]
@@ -142,7 +161,9 @@ Rectangle {
 //                    fee = HDMath.weiToEth(gf)
                     var nonce = reply["result"]["nonce"]
                     spendtxs = "" + nonce
-                    amount = HDMath.weiToEth(va)
+                    if (coinType !== "ERC20") {
+                        amount = HDMath.weiToEth(va)
+                    }
                     txid = reply["result"]["txid"]
                     var to = reply["result"]["recipient"]
                     var fr = reply["result"]["from"]
@@ -209,7 +230,6 @@ Rectangle {
         font.pointSize: Theme.mediumSize
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        text: Config.coinName(coinType) + " " + Lang.txtSignedTransaction
     }
 
     Label {
@@ -350,7 +370,7 @@ Rectangle {
             horizontalAlignment: Text.AlignLeft
             font.pointSize: Theme.mediumSize
             color: Theme.lightColor1
-            text: coinType
+            text: coinType == "ERC20" ? "ETH" : coinType
         }
     }
 

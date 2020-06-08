@@ -145,7 +145,11 @@ Rectangle {
                            "totalInValue": parseInt(utxoamount),
                            "rawtx": rtx
                         }]}
-        reqID = JsonRpc.rpcCall(coinType + ".DecodeRawTxOut", jsonObj, "",
+        var methodPre = coinType
+        if (coinType === "ERC20") {
+            methodPre = "ETH"
+        }
+        reqID = JsonRpc.rpcCall(methodPre + ".DecodeRawTxOut", jsonObj, "",
                                 Config.rpcLocal, Config.rpcLocalPort, Config.rpcLocalTls)
     }
 
