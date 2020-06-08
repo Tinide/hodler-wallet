@@ -120,7 +120,6 @@ Rectangle {
         var methodPre = coinType
         if (coinType === "ERC20") {
             methodPre = "ETH"
-            console.info(rtx)
         }
         reqID = JsonRpc.rpcCall(methodPre + ".DecodeRawTxOut", jsonObj, "",
                                 Config.rpcLocal, Config.rpcLocalPort, Config.rpcLocalTls)

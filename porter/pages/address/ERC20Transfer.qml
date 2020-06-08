@@ -35,7 +35,7 @@ Rectangle {
         visible = true
         opacity = 1
 
-        var bestFee = agent.getBestFee(coinType)
+        var bestFee = agent.getBestFee("ERC20")
         inputFee.text = "" + bestFee
         labelBestFee.text = Lang.txtEvalFee + bestFee
     }

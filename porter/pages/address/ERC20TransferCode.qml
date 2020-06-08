@@ -107,7 +107,7 @@ Rectangle {
             return
         }
 
-        var jsonObj = agent.createTransactionRequest(coinType,address,inputAddress.text,
+        var jsonObj = agent.createTransactionRequest("ERC20",address,inputAddress.text,
                                                      inputAmount.text,inputFee.text,rawUtxo)
         var fmp = HDMath.pow(10, tdecimals)
         var fval = HDMath.mul(inputAmount.text, fmp)

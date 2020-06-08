@@ -76,8 +76,9 @@ Item {
         case "BSV":
             return servbch.createTransactionRequest(fromAddr,toAddr,amount,fee,dataset)
         case "ETH":
-        case "ERC20":
             return serveth.createTransactionRequest(fromAddr,toAddr,amount,fee,dataset)
+        case "ERC20":
+            return serveth.createTransactionRequestERC20(fromAddr,toAddr,amount,fee,dataset)
         case "XRP":
             return servxrp.createTransactionRequest(fromAddr,toAddr,amount,fee,dataset)
 //        case "EOS":
@@ -204,6 +205,10 @@ Item {
             break
         case "ETH":
             fee = HDMath.mul(serveth.gaslimit, serveth.gasPrice)
+            fee = HDMath.weiToEth(fee)
+            break
+        case "ERC20":
+            fee = HDMath.mul(serveth.gaslimitERC20, serveth.gasPrice)
             fee = HDMath.weiToEth(fee)
             break
         case "XRP":
