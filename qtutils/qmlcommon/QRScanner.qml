@@ -18,13 +18,6 @@ Rectangle {
         if (camera.errorString != "") {
             Theme.showToast(camera.errorString)
         }
-
-        if (0) {
-            var testData = '
-{\"s\":\"HODL\",\"m\":\"TX\",\"c\":1,\"p\":1,\"t\":\"ERC20\",\"f\":\"0xd5671eb5bd5e9aadcf0bf2066d97b99f54909a31\",\"o\":\"0xd7fd02d7976448fc8731e1df4b201aa0840e8ad1\",\"a\":0,\"e\":0.0005796,\"d\":\"{\\n  \\\"n\\\": \\\"1\\\",\\n  \\\"f\\\": \\\"0xd5671eb5bd5e9aadcf0bf2066d97b99f54909a31\\\",\\n  \\\"t\\\": \\\"0xd7fd02d7976448fc8731e1df4b201aa0840e8ad1\\\",\\n  \\\"gl\\\": \\\"25200\\\",\\n  \\\"gp\\\": \\\"23000000000\\\",\\n  \\\"fe\\\": \\\"0.0005796\\\",\\n  \\\"v\\\": \\\"1100000\\\",\\n  \\\"c\\\": \\\"1\\\",\\n  \\\"co\\\": \\\"0xdac17f958d2ee523a2206206994597c13d831ec7\\\",\\n  \\\"sm\\\": \\\"USDT\\\",\\n  \\\"tn\\\": \\\"Tether USD\\\",\\n  \\\"td\\\": \\\"6\\\"\\n}\"}
-'
-            Theme.qrScanResult(testData)
-        }
     }
 
     Component.onDestruction: {
