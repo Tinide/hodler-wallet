@@ -10,7 +10,7 @@ import "qrc:/common"
 
 QDialog {
     id: _dialogCoins
-    content.height: Theme.ph(0.6)
+    content.height: Theme.ph(0.7)
 
     signal coinClicked(string strCoin)
 
@@ -23,8 +23,8 @@ QDialog {
         ListElement { typeCoin: "ETH" }
         ListElement { typeCoin: "BCH" }
         ListElement { typeCoin: "XRP" }
-//        ListElement { typeCoin: "EOS" }
         ListElement { typeCoin: "BSV" }
+        ListElement { typeCoin: "FIL" }
     }
 
     ListView {

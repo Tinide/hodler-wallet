@@ -70,6 +70,11 @@ Rectangle {
                 labelKey2.text = "HEX format:"
                 textKey1.text = reply["result"]["secret"]
                 textKey2.text = reply["result"]["hex"]
+            } else if (coinType == "FIL") {
+                labelKey1.text = "Keyinfo format:"
+                labelKey2.text = "HEX format:"
+                textKey1.text = reply["result"]["secret"]
+                textKey2.text = reply["result"]["hex"]
             } else {
                 labelKey1.text = "WIF format:"
                 labelKey2.text = "HEX format:"
@@ -149,7 +154,7 @@ Rectangle {
     QTextField {
         id: textKey1
         width: Theme.pw(0.9)
-        height: Theme.pw(0.2)
+        height: Theme.pw(0.25)
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: labelKey1.bottom
         anchors.topMargin: parent.height * 0.022

@@ -86,5 +86,6 @@
         <file>language/pl_pl.js</file>
         <file>pages/settings/DialogFontSize.qml</file>
         <file>images/IconUSDT.png</file>
+        <file>images/IconFilecoin.png</file>
     </qresource>
 </RCC>

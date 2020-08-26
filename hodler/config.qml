@@ -57,6 +57,9 @@ QtObject {
         case "BSV":
             val = 20202071
             break
+        case "FIL":
+            val = 20202072
+            break
         }
         return val
     }
@@ -184,6 +187,9 @@ QtObject {
         case "BSV":
             name = "Bitcoin SV"
             break
+        case "FIL":
+            name = "Filecoin"
+            break
         }
         return name
     }
@@ -215,6 +221,9 @@ QtObject {
         case "BSV":
             prefix = "bitcoinsv:"
             break
+        case "FIL":
+            prefix = "filecoin:"
+            break
         }
         return prefix
     }
@@ -236,6 +245,7 @@ QtObject {
             clr = Theme.lightColor2
             break
         case "BCH":
+        case "FIL":
             clr = Theme.lightColor6
             break
         case "XRP":
@@ -276,6 +286,9 @@ QtObject {
         case "BSV":
             iconSource = "qrc:/images/IconBitcoinSV.png"
             break
+        case "FIL":
+            iconSource = "qrc:/images/IconFilecoin.png"
+            break
         }
         return iconSource
     }
@@ -289,6 +302,7 @@ QtObject {
         case "BSV":
         case "ETH":
         case "XRP":
+        case "FIL":
             method = coinType + ".EntropyToAddress"
             break
         case "ERC20":
