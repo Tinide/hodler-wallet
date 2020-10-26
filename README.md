@@ -10,7 +10,7 @@ Hodler-Wallet is composed of offline-application (Hodler) and online-application
 
 Porter supports custom btcd, ltcd, bchd nodes, and it is safer and faster to use self-built nodes.
 
-Types currently supported by Hodler-Wallet 0.2.0:
+Types currently supported by Hodler-Wallet 0.3.0:
 - Bitcoin
 - Litecoin
 - Bitcoin Cash
@@ -18,6 +18,7 @@ Types currently supported by Hodler-Wallet 0.2.0:
 - Ethereum
 - Ethereum ERC20 token
 - Ripple
+- Polkadot
 
 Supported platforms:
 - Windows
