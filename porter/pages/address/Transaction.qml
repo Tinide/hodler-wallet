@@ -157,17 +157,19 @@ Rectangle {
             }
             reqID = JsonRpc.rpcCall(coinType + ".CreateRawTx", {"params": jsonObj}, "",
                                     Config.rpcLocal, Config.rpcLocalPort, Config.rpcLocalTls)
-        } else if (coinType === "XRP" || agent.isWeitCoinType(coinType)) {
+        } else if (coinType === "DOT" || coinType === "XRP" || agent.isWeitCoinType(coinType)) {
             jsonObj = agent.createTransactionRequest(coinType,address,inputAddress.text,
                                                      inputAmount.text,inputFee.text,rawUtxo)
             if (jsonObj === null) {
                 Theme.showToast(Lang.msgCreateTxFailed)
                 hide()
             }
-            if (inputTag.text == "") {
-                jsonObj["tag"] = 0
-            } else {
-                jsonObj["tag"] = parseInt(inputTag.text)
+            if (coinType === "XRP") {
+                if (inputTag.text == "") {
+                    jsonObj["tag"] = 0
+                } else {
+                    jsonObj["tag"] = parseInt(inputTag.text)
+                }
             }
             if (Config.debugMode) {
                 rawtx = JSON.stringify(jsonObj, "", "  ")

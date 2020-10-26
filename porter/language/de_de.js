@@ -15,6 +15,7 @@ function translate3(ptr) {
     ptr.txtSave               = "Speichern"
     ptr.txtBalance            = "Balance"
     ptr.txtPending            = "Ausstehend"
+    ptr.txtReserved           = "Reserviert"
     ptr.txtTotal              = "Insgesamt"
     ptr.txtCreate             = "Erstellen"
     ptr.txtSyncBalance        = "Balance synchronisieren"

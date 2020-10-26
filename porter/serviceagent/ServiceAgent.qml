@@ -11,7 +11,7 @@ Item {
     width: 0
     height: 0
 
-    property var servList: [servbtc,servltc,serveth,servbch,servbsv,servxrp]
+    property var servList: [servbtc,servltc,serveth,servbch,servbsv,servxrp,servdot]
 
     Component.onCompleted: {
         _serviceAgent.start()
@@ -44,7 +44,7 @@ Item {
         servbch.start()
         servbsv.start()
         servxrp.start()
-//        serveos.start()
+        servdot.start()
     }
 
     function serviceAvalible(coinType) {
@@ -63,6 +63,8 @@ Item {
             return servxrp.avaliable
 //        case "EOS":
 //            return serveos.avaliable
+        case "DOT":
+            return servdot.avaliable
         }
         return {}
     }
@@ -83,6 +85,8 @@ Item {
             return servxrp.createTransactionRequest(fromAddr,toAddr,amount,fee,dataset)
 //        case "EOS":
 //            return serveos.createTransactionRequest(fromAddr,toAddr,amount,fee,dataset)
+        case "DOT":
+            return servdot.createTransactionRequest(fromAddr,toAddr,amount,fee,dataset)
         }
         return {}
     }
@@ -126,6 +130,9 @@ Item {
 //        case "EOS":
 //            serveos.sendTransaction(txid, rawtx)
 //            break
+        case "DOT":
+            servdot.sendTransaction(txid, rawtx)
+            break;
         }
         //Config.debugOut("send tx: " + txid + ", " + rawtx)
     }
@@ -154,6 +161,9 @@ Item {
 //        case "EOS":
 //            serveos.searchTransaction(txreq)
 //            break
+        case "DOT":
+            servdot.searchTransaction(txreq)
+            break
         }
     }
 
@@ -182,6 +192,9 @@ Item {
 //        case "EOS":
 //            rc = serveos.syncBalance(addr)
 //            break
+        case "DOT":
+            rc = servdot.syncBalance(addr)
+            break
         }
         if (rc === false) {
             //Theme.showToast(coinType + " " + Lang.msgServiceUnaliable)
@@ -214,6 +227,8 @@ Item {
         case "XRP":
             fee = servxrp.bestFee
             break
+        case "DOT":
+            fee = servdot.bestFee
 //        case "EOS":
 //            break
         }
@@ -296,6 +311,7 @@ Item {
         case "ETH":
         case "ERC20":
         case "XRP":
+        case "DOT":
             if (confims >= 6) { rc = true }
             break
 //        case "EOS":
@@ -533,4 +549,5 @@ Item {
     ServiceBSV {id:servbsv}
     ServiceXRP {id:servxrp}
 //    ServiceEOS {id:serveos}
+    ServiceDOT {id:servdot}
 }

@@ -75,6 +75,11 @@ Rectangle {
                 labelKey2.text = "HEX format:"
                 textKey1.text = reply["result"]["secret"]
                 textKey2.text = reply["result"]["hex"]
+            } else if (coinType == "DOT") {
+                labelKey1.text = "HEX format:"
+                labelKey2.text = "HEX format:"
+                textKey1.text = reply["result"]["hex"]
+                textKey2.text = "0x" + reply["result"]["hex"]
             } else {
                 labelKey1.text = "WIF format:"
                 labelKey2.text = "HEX format:"

@@ -176,7 +176,7 @@ QString HDStore::querySignHistory(QString coinType, QString fromAddr, int offset
         obj["toAddr"] = val;
 
         val = record.value("utxoamount").toString();
-        if (rc == false || val.isEmpty()) {
+        if (rc == false) {
             break;
         }
         obj["utxoamount"] = val;

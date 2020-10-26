@@ -10,7 +10,7 @@ Item {
 
     property string coinType: "LTC"
     property string status: Lang.txtWait
-    property var servList: [agentLitecore,agentBlockCypher,agentCoinExplorer,agentBlockChair]
+    property var servList: [agentLitecore,agentBlockCypher,agentBlockChair]
 
     property bool avaliable: true
     property int curServiceIdx: 0
@@ -26,7 +26,7 @@ Item {
 
         agentLitecore.start()
         agentBlockCypher.start()
-        agentCoinExplorer.start()
+        //agentCoinExplorer.start()
         agentBlockChair.start()
     }
 
@@ -143,6 +143,6 @@ Item {
 
     LTCAgentLitecore {id:agentLitecore}
     LTCAgentBlockCypher {id:agentBlockCypher}
-    LTCAgentCoinExplorer {id:agentCoinExplorer}
+    //LTCAgentCoinExplorer {id:agentCoinExplorer}
     LTCAgentBlockChair {id:agentBlockChair}
 }

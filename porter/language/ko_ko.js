@@ -15,6 +15,7 @@ function translate2(ptr) {
     ptr.txtSave               = "저장"
     ptr.txtBalance            = "밸런스"
     ptr.txtPending            = "보류"
+    ptr.txtReserved           = "예약석"
     ptr.txtTotal              = "총계"
     ptr.txtCreate             = "창조하다"
     ptr.txtSyncBalance        = "동기화 잔액"

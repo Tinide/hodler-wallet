@@ -13,7 +13,7 @@ QtObject {
     }
 
     property string appTitle: "Porter"
-    property string appVersion: "0.2.1"
+    property string appVersion: "0.3.0"
 
     property string txtLanguage: "Language"
     property string txtENUS: "English"
@@ -44,6 +44,7 @@ QtObject {
     property string txtSave:               "Save"
     property string txtBalance:            "Balance"
     property string txtPending:            "Pending"
+    property string txtReserved:           "Reserved"
     property string txtTotal:              "Total"
     property string txtCreate:             "Create"
     property string txtSyncBalance:        "Sync balance"

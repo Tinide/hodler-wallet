@@ -68,6 +68,7 @@ Rectangle {
         case "ERC20":
         case "ETC":
         case "XRP":
+        case "DOT":
             requestDecode(rawTransaction)
             break
         case "BCH":
@@ -94,6 +95,10 @@ Rectangle {
                                    "rawtx": rtx
                                 }]}
         } else if (coinType == "XRP") {
+            jsonObj = {"params": [{
+                                   "rawtx": rtx
+                                }]}
+        } else if (coinType == "DOT") {
             jsonObj = {"params": [{
                                    "rawtx": rtx
                                 }]}
@@ -167,6 +172,9 @@ Rectangle {
                         || reply["result"]["fromAddr"] !== fromAddress) {
                         throw Lang.txtBadTransaction
                     }
+                } else if (coinType == "DOT") {
+                    reply["result"]["raw"] = rawTransaction
+                    jsonTransaction = JSON.stringify(reply["result"], "", " ")
                 }
             } catch (e) {
                 Theme.showToast("DecodeRawTxOut: " + e)

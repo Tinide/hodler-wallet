@@ -9,7 +9,7 @@ QtObject {
     signal qrScanResult(string qrd)
 
     property real appWidth: mm(116)
-    property real appHeight: mm(188)
+    property real appHeight: mm(177)
     property real appScale: 1
     property int  appX: 0
     property int  appY: 0
@@ -62,7 +62,7 @@ QtObject {
 
         if (_theme.isDesktop) {
             _theme.appX = (Screen.desktopAvailableWidth - _theme.appWidth) / 2
-            _theme.appY = (Screen.desktopAvailableHeight - _theme.appHeight) / 2
+            _theme.appY = (Screen.desktopAvailableHeight - _theme.appHeight) / 1.2
         }
         else {
             _theme.appWidth = Screen.desktopAvailableWidth

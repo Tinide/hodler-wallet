@@ -60,6 +60,9 @@ QtObject {
         case "FIL":
             val = 20202072
             break
+        case "DOT":
+            val = 20202073
+            break
         }
         return val
     }
@@ -190,6 +193,9 @@ QtObject {
         case "FIL":
             name = "Filecoin"
             break
+        case "DOT":
+            name = "Polkadot"
+            break
         }
         return name
     }
@@ -224,6 +230,9 @@ QtObject {
         case "FIL":
             prefix = "filecoin:"
             break
+        case "DOT":
+            prefix = "polkadot:"
+            break
         }
         return prefix
     }
@@ -250,6 +259,9 @@ QtObject {
             break
         case "XRP":
             clr = Theme.lightColor7
+            break
+        case "DOT":
+            clr = Theme.lightColor2
             break
         case "EOS":
             clr = Theme.lightColor1
@@ -289,6 +301,9 @@ QtObject {
         case "FIL":
             iconSource = "qrc:/images/IconFilecoin.png"
             break
+        case "DOT":
+            iconSource = "qrc:/images/IconDot.png"
+            break
         }
         return iconSource
     }
@@ -303,6 +318,7 @@ QtObject {
         case "ETH":
         case "XRP":
         case "FIL":
+        case "DOT":
             method = coinType + ".EntropyToAddress"
             break
         case "ERC20":

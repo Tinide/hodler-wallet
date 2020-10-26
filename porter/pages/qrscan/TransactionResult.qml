@@ -65,6 +65,9 @@ Rectangle {
         } else if (coinType == "XRP") {
             amount = "" + item["a"]
             fee = item["fe"]
+        } else if (coinType == "DOT") {
+            amount = "" + item["a"]
+            fee = item["fe"]
         } else {
             return false
         }
@@ -77,6 +80,7 @@ Rectangle {
         case "ERC20":
         case "ETC":
         case "XRP":
+        case "DOT":
             rc = requestDecode(rawTransaction)
             break
         case "BCH":
@@ -110,6 +114,10 @@ Rectangle {
                                    "rawtx": rtx
                                 }]}
         } else if (coinType == "XRP") {
+            jsonObj = {"params": [{
+                                   "rawtx": rtx
+                                }]}
+        } else if (coinType == "DOT") {
             jsonObj = {"params": [{
                                    "rawtx": rtx
                                 }]}
@@ -184,6 +192,15 @@ Rectangle {
                         throw Lang.txtBadTransaction
                     }
                     //console.info(jsonTransaction)
+                } else if (coinType == "DOT") {
+                    reply["result"]["raw"] = rawTransaction
+                    jsonTransaction = JSON.stringify(reply["result"], "", " ")
+                    txid = "0x" + reply["result"]["extrinsic_hash"]
+                    var dval = reply["result"]["params"][1]["value"]
+                    dval = HDMath.fdiv(dval, "10000000000")
+                    if (dval !== amount) {
+                        throw Lang.txtBadTransaction
+                    }
                 }
             } catch (e) {
                 Theme.showToast("DecodeRawTxOut: " + e)

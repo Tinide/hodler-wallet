@@ -44,8 +44,16 @@ QtObject {
 //            return "EOS"
         } else if (addr.startsWith("ripple:")) {
             return "XRP"
+        } else if (addr.startsWith("filecoin:")) {
+            return "FIL"
+        } else if (addr.startsWith("polkadot:")) {
+            return "DOT"
         }
         addr = addrstr.replace(/[^:]*:([^:]*)/, "$1")
+        if (   addr.startsWith("1")
+            && addr.length === 48) {
+            return "DOT"
+        }
         if (   addr.startsWith("1")
             || addr.startsWith("3")
             || addr.startsWith("bc1")
@@ -97,6 +105,8 @@ QtObject {
         case "ERC20":
         case "XRP":
         case "LTC":
+        case "FIL":
+        case "DOT":
 //        case "EOS":
             if (status >= 6) {
                 return Lang.txtStatusOK
@@ -229,6 +239,12 @@ QtObject {
         case "BSV":
             name = "Bitcoin SV"
             break
+        case "FIL":
+            name = "Filecoin"
+            break
+        case "DOT":
+            name = "Polkadot"
+            break
         }
         return name
     }
@@ -260,6 +276,12 @@ QtObject {
         case "BSV":
             prefix = "bitcoinsv:"
             break
+        case "FIL":
+            prefix = "filecoin:"
+            break
+        case "DOT":
+            prefix = "polkadot:"
+            break
         }
         return prefix
     }
@@ -277,9 +299,11 @@ QtObject {
             clr = Theme.lightColor7
             break
         case "ETC":
+        case "DOT":
             clr = Theme.lightColor2
             break
         case "BCH":
+        case "FIL":
             clr = Theme.lightColor6
             break
         case "XRP":
@@ -320,6 +344,12 @@ QtObject {
         case "BSV":
             iconSource = "qrc:/images/IconBitcoinSV.png"
             break
+        case "FIL":
+            iconSource = "qrc:/images/IcoinFilecoin.png"
+            break
+        case "DOT":
+            iconSource = "qrc:/images/IconDot.png"
+            break
         }
         return iconSource
     }
@@ -333,6 +363,8 @@ QtObject {
         case "BSV":
         case "ETH":
         case "XRP":
+        case "FIL":
+        case "DOT":
             method = coinType + ".EntropyToAddress"
             break
 //        case "EOS":

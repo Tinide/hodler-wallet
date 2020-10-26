@@ -92,8 +92,8 @@ Item {
             anchors.topMargin: Theme.mm(2)
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignRight
-            width: paintedWidth
-            height: paintedHeight
+            //width: paintedWidth
+            //height: paintedHeight
         }
 
         Image {

@@ -116,6 +116,17 @@ Rectangle {
                 jsonTransaction = JSON.stringify(rawset, "", "  ")
                 amount = rawset["value"]
                 fee    = rawset["fee"]
+            } else if (coinType == "DOT") {
+                reqset = JSON.parse(rawTransaction)
+                rawset = {}
+                rawset["fromAddress"] = reqset["f"]
+                rawset["toAddress"]   = reqset["t"]
+                rawset["nonce"]       = reqset["n"]
+                rawset["value"]       = reqset["v"]
+                rawset["fee"]         = reqset["fe"]
+                jsonTransaction = JSON.stringify(rawset, "", "  ")
+                amount = rawset["value"]
+                fee    = rawset["fee"]
             } else {
                 return false
             }

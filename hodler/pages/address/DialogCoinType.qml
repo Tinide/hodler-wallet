@@ -19,12 +19,13 @@ QDialog {
     ListModel {
         id: modelCoins
         ListElement { typeCoin: "BTC" }
+        ListElement { typeCoin: "DOT" }
         ListElement { typeCoin: "LTC" }
         ListElement { typeCoin: "ETH" }
         ListElement { typeCoin: "BCH" }
         ListElement { typeCoin: "XRP" }
         ListElement { typeCoin: "BSV" }
-        ListElement { typeCoin: "FIL" }
+        //ListElement { typeCoin: "FIL" }
     }
 
     ListView {

@@ -15,6 +15,7 @@ function translate6(ptr) {
     ptr.txtSave               = "Zapisz"
     ptr.txtBalance            = "Saldo"
     ptr.txtPending            = "oczekiwaniu"
+    ptr.txtReserved           = "Zarezerwowany"
     ptr.txtTotal              = "Całkowity"
     ptr.txtCreate             = "Stwórz"
     ptr.txtSyncBalance        = "Synchronizuj saldo"

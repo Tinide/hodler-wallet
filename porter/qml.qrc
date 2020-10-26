@@ -125,5 +125,9 @@
         <file>pages/address/ERC20ListItem.qml</file>
         <file>pages/address/ERC20Transfer.qml</file>
         <file>pages/address/ERC20TransferCode.qml</file>
+        <file>images/IconDot.png</file>
+        <file>images/IconFilecoin.png</file>
+        <file>serviceagent/DOTAgentPolkaScan.qml</file>
+        <file>serviceagent/ServiceDOT.qml</file>
     </qresource>
 </RCC>

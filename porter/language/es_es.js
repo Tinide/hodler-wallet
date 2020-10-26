@@ -15,6 +15,7 @@ function translate7(ptr) {
     ptr.txtSave               = "Salvar"
     ptr.txtBalance            = "Equilibrar"
     ptr.txtPending            = "Pendiente"
+    ptr.txtReserved           = "Reservada"
     ptr.txtTotal              = "Total"
     ptr.txtCreate             = "Crear"
     ptr.txtSyncBalance        = "Balance sinc"

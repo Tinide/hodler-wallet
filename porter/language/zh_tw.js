@@ -15,6 +15,7 @@ function translate9(ptr) {
     ptr.txtSave               = "保存"
     ptr.txtBalance            = "餘額"
     ptr.txtPending            = "未確認"
+    ptr.txtReserved           = "已預留"
     ptr.txtTotal              = "總額"
     ptr.txtCreate             = "創建"
     ptr.txtSyncBalance        = "同步餘額"

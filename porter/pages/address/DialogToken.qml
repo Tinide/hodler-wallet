@@ -18,12 +18,14 @@ QDialog {
     ListModel {
         id: modelCoins
         ListElement { token: "BTC" }
+        ListElement { token: "DOT" }
         ListElement { token: "LTC" }
         ListElement { token: "ETH" }
         ListElement { token: "BCH" }
         ListElement { token: "XRP" }
         //ListElement { token: "EOS" }
         ListElement { token: "BSV" }
+        //ListElement { token: "FIL" }
     }
 
     ListView {

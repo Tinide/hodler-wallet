@@ -15,6 +15,7 @@ function translate10(ptr) {
     ptr.txtSave               = "保存"
     ptr.txtBalance            = "余额"
     ptr.txtPending            = "未确认"
+    ptr.txtReserved           = "保留"
     ptr.txtTotal              = "总额"
     ptr.txtCreate             = "创建"
     ptr.txtSyncBalance        = "同步余额"

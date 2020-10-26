@@ -15,6 +15,7 @@ function translate1(ptr) {
     ptr.txtSave               = "セーブ"
     ptr.txtBalance            = "バランス"
     ptr.txtPending            = "保留中"
+    ptr.txtReserved           = "予約済み"
     ptr.txtTotal              = "合計"
     ptr.txtCreate             = "作成する"
     ptr.txtSyncBalance        = "同期残高"

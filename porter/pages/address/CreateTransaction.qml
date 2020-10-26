@@ -94,6 +94,18 @@ Rectangle {
                 return false
             }
         }
+        if (coinType == "DOT") {
+            var nBala = HDMath.mul(balance, "10000000000")
+            var nVal  = HDMath.mul(inputAmount.text, "10000000000")
+            var nFee  = HDMath.mul(inputFee.text, "10000000000")
+            nBala = HDMath.sub(nBala, "10000000000")
+            var nTran = HDMath.add(nVal, nFee)
+            nTran = HDMath.add(nTran, "0.05") // gas reserved
+            if (HDMath.cmp(nTran, nBala) > 0) {
+                Theme.showToast(Lang.msgBalanceNotEnough + ", " + Lang.txtReserved + " 1.05 Dot.")
+                //return false
+            }
+        }
 
         return true
     }

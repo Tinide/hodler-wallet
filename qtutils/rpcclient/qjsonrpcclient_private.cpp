@@ -67,6 +67,8 @@ quint64 QJsonRpcClient_private::rpcCall(QString method, QJsonObject postData, QS
     }
     url.setUrl(strUrl);
 
+    //qInfo() << strUrl;
+
     QNetworkRequest req(url);
     req.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::AlwaysNetwork);
     req.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");

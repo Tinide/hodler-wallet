@@ -15,6 +15,7 @@ function translate0(ptr) {
     ptr.txtSave               = "Save"
     ptr.txtBalance            = "Balance"
     ptr.txtPending            = "Pending"
+    ptr.txtReserved           = "Reserved"
     ptr.txtTotal              = "Total"
     ptr.txtCreate             = "Create"
     ptr.txtSyncBalance        = "Sync balance"

@@ -256,7 +256,7 @@ Rectangle {
         horizontalAlignment: Text.AlignLeft
         font.pointSize: Theme.baseSize
         color: Theme.lightColor1
-        text: Lang.txtPending + " :"
+        text: coinType == "DOT" ? Lang.txtReserved + " :": Lang.txtPending + " :"
     }
 
     Label {

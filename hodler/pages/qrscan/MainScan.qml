@@ -63,6 +63,7 @@ Rectangle {
     Connections {
         target: Theme
         onQrScanResult: {
+            console.info(qrd)
             sndBarcode.play()
             if (callback != null) {
                 callback(qrd)

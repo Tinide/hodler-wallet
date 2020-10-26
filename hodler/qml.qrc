@@ -87,5 +87,6 @@
         <file>pages/settings/DialogFontSize.qml</file>
         <file>images/IconUSDT.png</file>
         <file>images/IconFilecoin.png</file>
+        <file>images/IconDot.png</file>
     </qresource>
 </RCC>

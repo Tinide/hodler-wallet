@@ -5,6 +5,7 @@ import HD.JsonRpc 1.0
 import HD.Config 1.0
 import HD.Key 1.0
 import HD.Store 1.0
+import HD.Math 1.0
 import Theme 1.0
 import "qrc:/common"
 
@@ -144,6 +145,19 @@ Rectangle {
                                    "fee": rawset["fee"],
                                    "toAddr": rawset["toAddr"],
                                    "tag": rawset["tag"]
+                                 }]}
+        } else if (coinType == "DOT") {
+            var dval = HDMath.mul(rawset["value"], "10000000000")
+            var dfee = HDMath.mul(rawset["fee"],   "10000000000")
+            jsonObj = {"params": [{
+                                   "entropy": Key.getEntropy(),
+                                   "seed": Config.seed,
+                                   "m1": Config.coinsM1(cointype),
+                                   "m2": Store.getAddressM2(fromaddr),
+                                   "nonce": "" + rawset["nonce"],
+                                   "toAddress": rawset["toAddress"],
+                                   "amount": dval,
+                                   "fee": dfee
                                  }]}
         }
 

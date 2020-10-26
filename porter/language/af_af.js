@@ -15,6 +15,7 @@ function translate8(ptr) {
     ptr.txtSave               = "Save"
     ptr.txtBalance            = "balans"
     ptr.txtPending            = "hangende"
+    ptr.txtReserved           = "Voorbehou"
     ptr.txtTotal              = "totale"
     ptr.txtCreate             = "Skep"
     ptr.txtSyncBalance        = "Sinkroniseer"
