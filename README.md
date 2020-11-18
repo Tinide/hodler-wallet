@@ -18,7 +18,6 @@ Types currently supported by Hodler-Wallet 0.3.0:
 - Ethereum
 - Ethereum ERC20 token
 - Ripple
-- Polkadot
 
 Supported platforms:
 - Windows
